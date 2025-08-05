@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="EVA_M_ROLEWISEPATH" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="EVA_M_ROLEWISEPATH"/>
+<localVariables>
+  <variable id="INRGUID" parameter="true">
+    <descriptions defaultDescription="Input parameter"/>
+    <variableProperties datatype="NVARCHAR" length="20" mandatory="true">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="EVA_M_ROLPH">
+    <resourceUri>EVA_M_ROLPH</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="RLPID"/>
+      <viewAttribute id="ROLPH"/>
+      <viewAttribute id="RGUID"/>
+      <viewAttribute id="ISDEL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="EVA_M_ROLPH"/>
+    <filter>&quot;RGUID&quot;='$$INRGUID$$' and &quot;ISDEL&quot;='0'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="RLPID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="primary key"/>
+      <keyMapping columnObjectName="Projection_1" columnName="RLPID"/>
+    </attribute>
+    <attribute id="ROLPH" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Role path"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ROLPH"/>
+    </attribute>
+    <attribute id="RGUID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GUID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="RGUID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="false" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="110" y="194"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

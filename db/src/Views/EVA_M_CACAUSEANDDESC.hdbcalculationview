@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="EVA_M_CACAUSEANDDESC" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="EVA_M_CACAUSEANDDESC"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="EVA_M_SCATA">
+    <resourceUri>EVA_M_SCATA</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="UNQID"/>
+      <viewAttribute id="TYVAL"/>
+      <viewAttribute id="TXVAL"/>
+      <viewAttribute id="PRNID"/>
+      <viewAttribute id="ISACT"/>
+      <viewAttribute id="ISDEL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="EVA_M_SCATA"/>
+    <filter>&quot;ISDEL&quot;='0'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="UNQID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unique Id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="UNQID"/>
+    </attribute>
+    <attribute id="TYVAL" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Master Data Type Value"/>
+      <keyMapping columnObjectName="Projection_1" columnName="TYVAL"/>
+    </attribute>
+    <attribute id="TXVAL" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Text Value"/>
+      <keyMapping columnObjectName="Projection_1" columnName="TXVAL"/>
+    </attribute>
+    <attribute id="PRNID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Parent Id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PRNID"/>
+    </attribute>
+    <attribute id="ISACT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Is active 1 yes 0 no"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ISACT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="107" y="203"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

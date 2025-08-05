@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="EVA_M_USERINFO" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" mdsCubeConversionExecution="AT_LOADING_TIME">
+<descriptions defaultDescription="EVA_M_USERINFO"/>
+<localVariables>
+  <variable id="APPLICATIONUSER" type="session"/>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="M_EMPDT">
+    <resourceUri>M_EMPDT</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="EMPID"/>
+      <viewAttribute id="EMPNM"/>
+      <viewAttribute id="EMAIL"/>
+      <viewAttribute id="SUPID"/>
+      <viewAttribute id="SUPNM"/>
+      <viewAttribute id="USRID"/>
+      <viewAttribute id="POSIT"/>
+      <viewAttribute id="DEPTC"/>
+      <viewAttribute id="DEPNM"/>
+      <viewAttribute id="PHONE"/>
+      <viewAttribute id="ISDEL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="M_EMPDT"/>
+    <filter>&quot;USRID&quot;='??APPLICATIONUSER??' and &quot;ISDEL&quot;='0'</filter>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="EMPID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Employee Id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMPID"/>
+    </attribute>
+    <attribute id="EMPNM" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Employee Name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMPNM"/>
+    </attribute>
+    <attribute id="EMAIL" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="corporate email"/>
+      <keyMapping columnObjectName="Projection_1" columnName="EMAIL"/>
+    </attribute>
+    <attribute id="SUPID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Supervisor Id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SUPID"/>
+    </attribute>
+    <attribute id="SUPNM" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Supervisor Name"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SUPNM"/>
+    </attribute>
+    <attribute id="USRID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="USRID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="USRID"/>
+    </attribute>
+    <attribute id="POSIT" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Position"/>
+      <keyMapping columnObjectName="Projection_1" columnName="POSIT"/>
+    </attribute>
+    <attribute id="DEPTC" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Department Code"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DEPTC"/>
+    </attribute>
+    <attribute id="DEPNM" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPNM"/>
+      <keyMapping columnObjectName="Projection_1" columnName="DEPNM"/>
+    </attribute>
+    <attribute id="PHONE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="phone number"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PHONE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="false" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="193"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

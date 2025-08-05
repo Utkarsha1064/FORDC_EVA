@@ -1,0 +1,63 @@
+_schema-version: 3.3.0
+ID: FORDC_EVA
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  - name: FORDC_EVA-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      instances: 1
+      memory: 200M
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: FORD-db
+      - name: FORDC_EVA-auth
+      - name: FORDDB-destination
+
+  - name: FORD-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+      memory: 100M
+    requires:
+      - name: FORD-db
+
+resources:
+  - name: FORD-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+      config:
+        schema: ${default-container-name}
+  - name: FORDC_EVA-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: FORDC_EVA-org-dev
+        tenant-mode: dedicated
+  - name: FORDDB-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+

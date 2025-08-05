@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="EVA_M_AUDITCATEGORYLVL1" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
+<descriptions defaultDescription="EVA_M_AUDITCATEGORYLVL1"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="EVA_M_CHCLS">
+    <resourceUri>EVA_M_CHCLS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="CHLID"/>
+      <viewAttribute id="PRTID"/>
+      <viewAttribute id="CLUSE"/>
+      <viewAttribute id="CLDES"/>
+      <viewAttribute id="COLID"/>
+      <viewAttribute id="LBLVL"/>
+      <viewAttribute id="UNQID"/>
+      <viewAttribute id="ISACT"/>
+      <viewAttribute id="ISDEL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="EVA_M_CHCLS"/>
+    <filter>&quot;PRTID&quot;= 0 and &quot;LBLVL&quot; = 1 and &quot;ISDEL&quot; = '0'</filter>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="CHLID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="primary key"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CHLID"/>
+    </attribute>
+    <attribute id="PRTID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Parent id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PRTID"/>
+    </attribute>
+    <attribute id="CLUSE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Clause ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CLUSE"/>
+    </attribute>
+    <attribute id="CLDES" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Clause Description"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CLDES"/>
+    </attribute>
+    <attribute id="COLID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Column id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="COLID"/>
+    </attribute>
+    <attribute id="LBLVL" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Label Level"/>
+      <keyMapping columnObjectName="Projection_1" columnName="LBLVL"/>
+    </attribute>
+    <attribute id="UNQID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Unique id"/>
+      <keyMapping columnObjectName="Projection_1" columnName="UNQID"/>
+    </attribute>
+    <attribute id="ISACT" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Is value active 1 yes 0 no"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ISACT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="221"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
