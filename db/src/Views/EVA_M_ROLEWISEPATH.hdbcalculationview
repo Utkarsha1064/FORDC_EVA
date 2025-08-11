@@ -3,7 +3,7 @@
 <descriptions defaultDescription="EVA_M_ROLEWISEPATH"/>
 <localVariables>
   <variable id="INRGUID" parameter="true">
-    <descriptions defaultDescription="Input parameter"/>
+    <descriptions defaultDescription="RGUID"/>
     <variableProperties datatype="NVARCHAR" length="20" mandatory="true">
       <valueDomain type="empty"/>
       <selection multiLine="false" type="SingleValue"/>
